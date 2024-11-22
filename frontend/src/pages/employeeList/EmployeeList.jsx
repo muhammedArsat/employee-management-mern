@@ -25,7 +25,7 @@ const EmployeeList = () => {
     };
 
     fetchEmployees();
-  }, []);
+  }, [employees]);
 
   const handleEdit = (employeecode) => {
     navigate(`/employee-edit/${employeecode}`);
@@ -39,9 +39,9 @@ const EmployeeList = () => {
     try{
     const response = await api.deleteEmployee(employeecode);
     toast.success(`Employee Id ${empid} Deleted Successfully`);
-    setSearch((employee)=>{
-      employee.employeecode !== employeecode
-    })
+    setEmployees((prevEmployees) =>
+      prevEmployees.filter((employee) => employee.employeecode !== employeecode)
+    );
 
     }catch(error){
       toast.error("Error in Deleting Employee Details")

@@ -31,7 +31,7 @@ const EmployeeCard = ({
         profile: null, // Reset file input (you can't set a value here)
       });
     }
-  }, []);
+  }, [initialValues]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,13 +41,13 @@ const EmployeeCard = ({
     }));
   };
 
-  // const handleFileChange = (e) => {
-  //   const { files } = e.target;
-  //   setFormValues((prev) => ({
-  //     ...prev,
-  //     profile: files[0], // Store the file object (first file selected)
-  //   }));
-  // };
+  const handleFileChange = (e) => {
+    const { files } = e.target;
+    setFormValues((prev) => ({
+      ...prev,
+      profile: files[0], // Store the file object (first file selected)
+    }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -135,10 +135,10 @@ const EmployeeCard = ({
         </div>
         <div className="emp-card-label-container">
           <label htmlFor="">Profile :</label>
-          {/* <input type="file" 
+          <input type="file" 
           name="profile"
              onChange={handleFileChange}
-          required /> */}
+          required />
         </div>
         <div className="emp-btn-cont">
           <button type="submit">{btnName}</button>
